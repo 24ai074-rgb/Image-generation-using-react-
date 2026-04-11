@@ -1,1 +1,162 @@
 @import "tailwindcss";
+
+/* ==============================
+   LUMINA — Design System
+   ============================== */
+
+/* ---------- Theme Tokens ---------- */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+
+  /* Colors — Deep Cosmic Palette */
+  --color-surface-900: #08090d;
+  --color-surface-800: #0e1018;
+  --color-surface-700: #151722;
+  --color-surface-600: #1c1f2e;
+  --color-surface-500: #252940;
+  --color-surface-400: #363b5a;
+  --color-surface-300: #4a5078;
+  --color-surface-200: #6a7199;
+  --color-surface-100: #9298b8;
+
+  --color-accent-primary: #7c5cfc;
+  --color-accent-secondary: #00d4ff;
+  --color-accent-tertiary: #ff6bcb;
+  --color-accent-success: #34d399;
+  --color-accent-warning: #fbbf24;
+  --color-accent-danger: #f87171;
+
+  --color-text-primary: #f0f1f7;
+  --color-text-secondary: #9298b8;
+  --color-text-muted: #5a6080;
+}
+
+/* ---------- Base Styles ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-surface-900);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-primary);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-500);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* ---------- Utility Layers ---------- */
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* ---------- Reusable Patterns ---------- */
+
+/* Glass panel */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 23, 34, 0.8) 0%,
+    rgba(14, 16, 24, 0.6) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle noise texture overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-700) 25%,
+    var(--color-surface-600) 50%,
+    var(--color-surface-700) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+/* Glow effect */
+.glow-accent {
+  box-shadow:
+    0 0 20px rgba(124, 92, 252, 0.15),
+    0 0 60px rgba(124, 92, 252, 0.08);
+}
+
+.glow-accent-strong {
+  box-shadow:
+    0 0 20px rgba(124, 92, 252, 0.3),
+    0 0 60px rgba(124, 92, 252, 0.15),
+    0 0 100px rgba(124, 92, 252, 0.08);
+}
