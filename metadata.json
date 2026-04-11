@@ -1,0 +1,5 @@
+{
+  "name": "Lumina - AI Image Studio",
+  "description": "A powerful AI image generation tool powered by Gemini 3.1 Flash Image. Generate high-quality visuals with smart prompt refinement.",
+  "requestFramePermissions": []
+}
